@@ -1,0 +1,17 @@
+# Environment variables (NEVER upload these)
+.env
+.env.local
+.env.development
+.env.production
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
