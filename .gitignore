@@ -1,17 +1,44 @@
-# Environment variables (NEVER upload these)
+# Environment variables (NEVER commit these)
 .env
 .env.local
 .env.development
 .env.production
 
-# Node.js
-node_modules/
-
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Django
+db.sqlite3
+staticfiles/
+bioscout.log
+*.log
+
+# Media uploads (large binary files)
+media/
+
+# RAG indexes (regenerated via build_rag_index)
+data/chroma_db/
+data/bm25_index.pkl
+
+# ChromaDB model cache
+.chroma/
 
 # OS files
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+
+# Node.js
+node_modules/
+
+# Streamlit
+.streamlit/secrets.toml
