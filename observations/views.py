@@ -99,10 +99,21 @@ class ObservationViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-@extend_schema(
-    responses={200: None},
-    summary="Platform-wide statistics",
-)
+@extend_schema(responses={200: None}, summary="Knowledge base index statistics")
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def kb_stats_view(request):
+    """
+    Return the number of documents indexed in the RAG knowledge base.
+    GET /api/kb-stats/
+    """
+    try:
+        from .rag.vector_store import SpeciesVectorStore
+        vs = SpeciesVectorStore()
+        stats = vs.get_stats()
+        return Response({"total_documents": stats.get("total_documents", 0)})
+    except Exception:
+        return Response({"total_documents": 0})
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def stats_view(request):

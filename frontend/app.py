@@ -97,10 +97,8 @@ with st.sidebar:
     # Knowledge base stats
     st.markdown("**📊 Knowledge Base**")
     try:
-        from observations.rag.vector_store import SpeciesVectorStore
-        vs = SpeciesVectorStore()
-        kb_stats = vs.get_stats()
-        n = kb_stats.get("total_documents", 0)
+        kb = utils.get_kb_stats()
+        n = kb.get("total_documents", 0)
         if n > 0:
             st.caption(f"✅ {n} species indexed")
             st.caption("Hybrid BM25 + Vector search")

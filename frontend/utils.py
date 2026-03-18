@@ -23,6 +23,16 @@ def _headers(token: str | None = None) -> dict:
     return h
 
 
+def get_kb_stats() -> dict:
+    """Fetch RAG knowledge base index stats from /api/kb-stats/."""
+    try:
+        resp = requests.get(f"{API_BASE}/kb-stats/", timeout=5)
+        resp.raise_for_status()
+        return resp.json()
+    except Exception:
+        return {"total_documents": 0}
+
+
 def get_stats() -> dict | None:
     """
     Fetch platform-wide statistics from /api/stats/.

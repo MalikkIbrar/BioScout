@@ -7,7 +7,7 @@ from rest_framework.routers import DefaultRouter
 
 from .ai_views import identify_and_save, species_qa, species_qa_rag
 from .auth_views import login_view, me_view, refresh_view, register_view
-from .views import ObservationViewSet, stats_view
+from .views import ObservationViewSet, stats_view, kb_stats_view
 
 router = DefaultRouter()
 router.register(r"observations", ObservationViewSet, basename="observation")
@@ -18,6 +18,7 @@ urlpatterns = [
 
     # Stats
     path("stats/", stats_view, name="stats"),
+    path("kb-stats/", kb_stats_view, name="kb_stats"),
 
     # AI endpoints
     path("identify/", identify_and_save, name="identify"),
